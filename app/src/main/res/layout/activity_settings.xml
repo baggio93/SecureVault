@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Impostazioni"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Indirizzo Server (IP o Dominio)"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etServerIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="es. 192.168.1.11"
+        android:inputType="textUri"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnSaveIp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salva Indirizzo IP"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sincronizzazione"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnForceSync"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forza Aggiornamento dal Server"
+        android:backgroundTint="#2196F3"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zona Pericolosa"
+        android:textColor="#D32F2F"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnWipeData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Elimina tutti i dati dal telefono"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>

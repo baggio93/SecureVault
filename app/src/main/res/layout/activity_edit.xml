@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/bg_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvEditTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aggiungi Password"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Piattaforma o Sito Web"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditPlatform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="es. Google, Amazon, Banca..."
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username / Email"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="es. mario.rossi@email.com"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Inserisci la password"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PIN (Opzionale)"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="es. 1234"
+            android:inputType="numberPassword"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indirizzo Web (URL)"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="es. https://www.sito.com"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note Segrete"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etEditNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Appunti, domande di sicurezza..."
+            android:lines="3"
+            android:gravity="top"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Categoria (Tag)"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp" />
+        <EditText
+            android:id="@+id/etTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="es. Lavoro, Finanza, Social..."
+            android:inputType="text"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/input_bg"
+            android:textColorHint="@color/text_secondary"
+            android:textColor="@color/text_primary"/>
+
+        <Button
+            android:id="@+id/btnSaveItem"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="SALVA DATI"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:backgroundTint="#008000" />
+
+    </LinearLayout>
+</ScrollView>
