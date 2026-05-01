@@ -12,14 +12,25 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * Activity che gestisce le impostazioni dell'applicazione.
+ * Permette all'utente di configurare l'IP del server, il timeout di rete,
+ * forzare la sincronizzazione ed eliminare i dati locali (Wipe).
+ */
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var database: AppDatabase
 
+    /**
+     * Metodo chiamato alla creazione della schermata.
+     * Inizializza i componenti grafici, imposta i valori correnti salvati in memoria
+     * e configura le azioni dei vari bottoni.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE, android.view.WindowManager.LayoutParams.FLAG_SECURE)
         setContentView(R.layout.activity_settings)
+
         // --- INIZIO MODALITÀ SCHERMO INTERO (IMMERSIVA) ---
         val windowInsetsController = androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
 
@@ -33,14 +44,19 @@ class SettingsActivity : AppCompatActivity() {
         database = AppDatabase.getDatabase(this)
 
         val etServerIp = findViewById<EditText>(R.id.etServerIp)
+        val etTimeout = findViewById<EditText>(R.id.etTimeout)
         val btnSaveIp = findViewById<Button>(R.id.btnSaveIp)
         val btnForceSync = findViewById<Button>(R.id.btnForceSync)
         val btnWipeData = findViewById<Button>(R.id.btnWipeData)
 
-        // 1. Carica l'IP attuale
+        // 1. Carica il timeout attuale tramite il Singleton SettingsManager
+        val currentTimeoutSec = SettingsManager.getTimeoutMillis(this) / 1000f
+        etTimeout.setText(currentTimeoutSec.toString())
+
+        // 2. Carica l'IP attuale
         etServerIp.setText(SettingsManager.getServerIp(this))
 
-        // 2. Salva il nuovo IP
+        // 3. Salva il nuovo IP e il nuovo Timeout
         btnSaveIp.setOnClickListener {
             val newIp = etServerIp.text.toString().trim()
             if (newIp.isNotEmpty()) {
@@ -48,9 +64,19 @@ class SettingsActivity : AppCompatActivity() {
                 ApiClient.resetClient()
                 Toast.makeText(this, "IP Salvato e Client resettato!", Toast.LENGTH_SHORT).show()
             }
+
+            // Leggi il numero digitato e trasformalo in millisecondi (es. 1.5 * 1000 = 1500)
+            val timeoutStr = etTimeout.text.toString()
+            val timeoutMillis = if (timeoutStr.isNotEmpty()) {
+                (timeoutStr.toFloat() * 1000).toLong()
+            } else {
+                1500L // valore di sicurezza se lasci vuoto
+            }
+            // Usa il Singleton passando il context (this)
+            SettingsManager.setTimeoutMillis(this, timeoutMillis)
         }
 
-        // 3. Forza Sincronizzazione
+        // 4. Forza Sincronizzazione
         btnForceSync.setOnClickListener {
             lifecycleScope.launch(Dispatchers.IO) {
                 // Cancelliamo solo i dati "SYNCED", mantenendo quelli che stiamo modificando (NEW/MODIFIED)
@@ -64,7 +90,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        // 4. Wipe Data (Elimina tutto)
+        // 5. Wipe Data (Elimina tutto)
         btnWipeData.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Attenzione!")

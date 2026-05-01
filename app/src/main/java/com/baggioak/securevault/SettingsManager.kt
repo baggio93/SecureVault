@@ -61,4 +61,14 @@ object SettingsManager {
         val prefs = context.getSharedPreferences("secure_vault_prefs", Context.MODE_PRIVATE)
         prefs.edit().remove("saved_username").remove("saved_password").apply()
     }
+
+    // Legge il timeout salvato (di default 1500 millisecondi)
+    fun getTimeoutMillis(context: Context): Long {
+        return getPrefs(context).getLong("network_timeout", 1500L)
+    }
+
+    // Salva il nuovo timeout
+    fun setTimeoutMillis(context: Context, millis: Long) {
+        getPrefs(context).edit().putLong("network_timeout", millis).apply()
+    }
 }

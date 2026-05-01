@@ -26,7 +26,27 @@
         android:hint="es. 192.168.1.11"
         android:inputType="textUri"
         android:layout_marginBottom="8dp"/>
+    <!-- Etichetta Timeout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timeout Connessione (Secondi)"
+        android:textStyle="bold"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"/>
 
+    <!-- Campo di inserimento Timeout -->
+    <EditText
+        android:id="@+id/etTimeout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="es. 1.5"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/input_bg"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/text_secondary"/>
     <Button
         android:id="@+id/btnSaveIp"
         android:layout_width="match_parent"
